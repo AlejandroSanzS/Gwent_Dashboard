@@ -1,1 +1,0 @@
-cd C:\Users\alexs\Desktop\Alejandro\Universidad\Master_Ciencia_de_datos\Gwent-TFM python -m bokeh serve --show bokeh_gwent
