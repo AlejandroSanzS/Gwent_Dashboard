@@ -1,3 +1,3 @@
 
-web: bokeh serve --port=$PORT --host=https://dashboard-gwent.herokuapp.com/ --host=* \
+web: gunicorn -w   --port=$PORT --host=https://dashboard-gwent.herokuapp.com/ --host=* \
      --address=0.0.0.0 --use-xheaders main.py
