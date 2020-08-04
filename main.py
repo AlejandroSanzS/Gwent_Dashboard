@@ -19,7 +19,7 @@ from bokeh.palettes import Spectral4,Spectral6,Spectral5
 
 
 
-os.chdir(r'c:\\Users\\alexs\\Desktop\\Alejandro\\Universidad\\Master_Ciencia_de_datos\\Gwent-TFM\\bokeh_gwent\\data')
+os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 dataframe_art = pd.read_excel('df_processed.xlsx', sheet_name='dataframe_art')
 dataframe_tipo= pd.read_excel('df_processed.xlsx', sheet_name='dataframe_tipo')
 dataframe_faction= pd.read_excel('df_processed.xlsx', sheet_name='dataframe_faction')
@@ -42,7 +42,7 @@ def fig_scoiatel():
     p1.axis.visible = False
     p1.toolbar.logo = None
     p1.toolbar_location = None
-    p1.image_url(url=['http://localhost:5006/bokeh_gwent/static/Scoiatel.png'], x=0, y=1, w=1, h=1)
+    p1.image_url(url=['http://localhost:5006/Gwent_Dashboard/static/Scoiatel.png'], x=0, y=1, w=1, h=1)
     
     return p1
 
@@ -52,7 +52,7 @@ def fig_neutral():
     p12.axis.visible = False
     p12.toolbar.logo = None
     p12.toolbar_location = None
-    p12.image_url(url=['http://localhost:5006/bokeh_gwent/static/Neutral.png'], x=0, y=1, w=1, h=1)
+    p12.image_url(url=['http://localhost:5006/Gwent_Dashboard/static/Neutral.png'], x=0, y=1, w=1, h=1)
 
     
     return p12
@@ -62,7 +62,7 @@ def fig_Monsters():
     p13.axis.visible = False
     p13.toolbar.logo = None
     p13.toolbar_location = None
-    p13.image_url(url=['http://localhost:5006/bokeh_gwent/static/Monsters.png'], x=0, y=1, w=1, h=1)
+    p13.image_url(url=['http://localhost:5006/Gwent_Dashboard/static/Monsters.png'], x=0, y=1, w=1, h=1)
     
     return p13
 def fig_Nilfgaard():
@@ -70,7 +70,7 @@ def fig_Nilfgaard():
     p14.axis.visible = False
     p14.toolbar.logo = None
     p14.toolbar_location = None
-    p14.image_url(url=['http://localhost:5006/bokeh_gwent/static/Nilfgaard.png'], x=0, y=1, w=1, h=1)
+    p14.image_url(url=['http://localhost:5006/Gwent_Dashboard/static/Nilfgaard.png'], x=0, y=1, w=1, h=1)
     
     return p14
 def fig_NR():
@@ -78,7 +78,7 @@ def fig_NR():
     p15.axis.visible = False
     p15.toolbar.logo = None
     p15.toolbar_location = None
-    p15.image_url(url=['http://localhost:5006/bokeh_gwent/static/NR.png'], x=0, y=1, w=1, h=1)
+    p15.image_url(url=['http://localhost:5006/Gwent_Dashboard/static/NR.png'], x=0, y=1, w=1, h=1)
     
     return p15
 def fig_Skellige():
@@ -86,7 +86,7 @@ def fig_Skellige():
     p16.axis.visible = False
     p16.toolbar.logo = None
     p16.toolbar_location = None
-    p16.image_url(url=['http://localhost:5006/bokeh_gwent/static/Skellige.png'], x=0, y=1, w=1, h=1)
+    p16.image_url(url=['http://localhost:5006/Gwent_Dashboard/static/Skellige.png'], x=0, y=1, w=1, h=1)
     
     return p16
 def fig_Syndicate():
@@ -94,7 +94,7 @@ def fig_Syndicate():
     p17.axis.visible = False
     p17.toolbar.logo = None
     p17.toolbar_location = None
-    p17.image_url(url=['http://localhost:5006/bokeh_gwent/static/Syndicate.png'], x=0, y=1, w=1, h=1)
+    p17.image_url(url=['http://localhost:5006/Gwent_Dashboard/static/Syndicate.png'], x=0, y=1, w=1, h=1)
     
     return p17
 ###################################################
@@ -421,7 +421,7 @@ tab6 = Panel(child=row(column(div_cards,data_table1,button1),column(div_leaders,
 div_keg = Div(text="""This data was obtained from opening 75 Kegs""",
 width=200, height=100)
 
-os.chdir(r'c:\\Users\\alexs\\Desktop\\Alejandro\\Universidad\\Master_Ciencia_de_datos\\Gwent-TFM\\data')
+os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 df_kegs = pd.read_excel('kegs.xlsx',sheet_name = 'BASE').fillna(0)
 df_kegs = df_kegs.drop('KEG',axis =1).astype({'RARE':'int64','EPIC':'int64','LEGENDARY':'int64'})
 
@@ -454,7 +454,7 @@ y2_x.on_change('value', update2_x)
 
 
 def figura2_x():
-    os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Master_Ciencia_de_datos/Gwent-TFM/bokeh_gwent/data')
+    os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
     data_x = pd.read_excel( 'categories.xlsx', sheet_name=str(y_x.value + '_' + y2_x.value))
     dataframe1 = data_x
     cate =list(dataframe1['Category'])
@@ -509,7 +509,7 @@ layout41_y = row(figura2_y())
 
 #####################################################################################################
 # EXPLICACION DE LAS HABILIDADES
-os.chdir(r'c:\\Users\\alexs\\Desktop\\Alejandro\\Universidad\\Master_Ciencia_de_datos\\Gwent-TFM\\bokeh_gwent\\data')
+os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 keywords = pd.read_excel('keywords.xlsx')
 habilidades = list(keywords.Ability)
 
@@ -518,7 +518,7 @@ def update_habilidad(attr, old, new):
     layout_habil.children[0]= texto()
 
 def texto():
-    os.chdir(r'c:\\Users\\alexs\\Desktop\\Alejandro\\Universidad\\Master_Ciencia_de_datos\\Gwent-TFM\\bokeh_gwent\\data')
+    os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
     keywords = pd.read_excel('keywords.xlsx')
     habilidades = list(keywords.Ability)
     texto = keywords[keywords['Ability']==sel_habilidad.value]['Description']
@@ -566,7 +566,7 @@ for valor_faccion in faction_leaders:
         tooltip=[]
         url=[]
         tooltip=df_gwent_leaders[df_gwent_leaders['ID']==values]['Tooltip'].tolist()[0]
-        url= str('http://localhost:5006/bokeh_gwent/static/Skills_leaders/'+valor_faccion+'/'+str(values)+'.png')
+        url= str('http://localhost:5006/Gwent_Dashboard/static/Skills_leaders/'+valor_faccion+'/'+str(values)+'.png')
         results = [tooltip]
         results2 =[url]
         layout_text.append(results)

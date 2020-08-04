@@ -15,7 +15,7 @@ from bokeh.layouts import column, row
 from bokeh.models.widgets import Tabs
 from bokeh.palettes import Spectral4,Spectral6,Spectral5
 #### LOADING DATA  ######
-os.chdir(r'c:\\Users\\alexs\\Desktop\\Alejandro\\Universidad\\Master_Ciencia_de_datos\\Gwent-TFM\\bokeh_gwent\\data')
+os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 df_gwent = pd.read_excel('df_gwent.xlsx')
 ##############################################################################################################
 
@@ -253,7 +253,7 @@ facciones_cprov = facciones_cprov.merge(g, on='Valores_prov',how = 'outer')
 facciones_cprov=facciones_cprov.fillna(0).sort_values(['Valores_prov'])
 
 
-os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Master_Ciencia_de_datos/Gwent-TFM/bokeh_gwent/data')
+os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 writer = pd.ExcelWriter('df_processed.xlsx', engine='xlsxwriter')
 dataframe_art.to_excel(writer, sheet_name='dataframe_art')
 dataframe_tipo.to_excel(writer, sheet_name='dataframe_tipo')
@@ -267,7 +267,7 @@ facciones_cprov.to_excel(writer, sheet_name='facciones_cprov')
 
 writer.save() #ACTIVAR SI QUEREMOS GUARDAR
 
-os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Master_Ciencia_de_datos/Gwent-TFM/bokeh_gwent/data')
+os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 writer = pd.ExcelWriter('df_gwent_clean.xlsx', engine='xlsxwriter')
 df_gwent.to_excel(writer, sheet_name='df_gwent')
 writer.save() #ACTIVAR SI QUEREMOS GUARDAR
@@ -288,7 +288,7 @@ for values_faction in faction_list_order:
         text.append(values_faction + '_' + values_type)
         ability.append(counts(seleccion(seleccion(df_gwent,'FactionId',values_faction),'Type',values_type),'Abilites'))
         
-os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Master_Ciencia_de_datos/Gwent-TFM/bokeh_gwent/data')
+os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 writer = pd.ExcelWriter('categories.xlsx', engine='xlsxwriter')
 for values in range(0,len(text)):
     texto = text[values]
