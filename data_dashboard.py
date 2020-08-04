@@ -14,35 +14,9 @@ from bokeh.models import CheckboxButtonGroup,Panel, Tabs, Div, Slider, TextInput
 from bokeh.layouts import column, row
 from bokeh.models.widgets import Tabs
 from bokeh.palettes import Spectral4,Spectral6,Spectral5
-#### LOADING AND DATA TREATMENT ######
+#### LOADING DATA  ######
 os.chdir(r'c:\\Users\\alexs\\Desktop\\Alejandro\\Universidad\\Master_Ciencia_de_datos\\Gwent-TFM\\bokeh_gwent\\data')
 df_gwent = pd.read_excel('df_gwent.xlsx')
-
-df_gwent = df_gwent[['ID','Name_x','Available','Power', 'Armor','Provision','ArtistName' ,'Placement', 'Rarity', 'PrimaryCategory_0',
-       'PrimaryCategory_1', 'PrimaryCategory_2', 'Categories_0',
-       'Categories_1', 'Categories_2','FactionId','SecondaryFactionId', 'Tier', 'Type_y','fluff', 'Tooltip', 'hab0',
-       'hab1', 'hab2', 'hab3', 'hab4', 'hab5', 'hab6', 'hab7']]
-
-
-df_gwent = df_gwent.drop(['PrimaryCategory_1', 'PrimaryCategory_2', 'Categories_2'], axis = 1)
-df_gwent = df_gwent.rename(columns = {'Name_x': 'Name','PrimaryCategory_0':'Category_0', 'Categories_0':'Category_1','Categories_1':'Category_2','SecondaryFactionId':'FactionId2','Type_y': 'Type','fluff':'Fluff'})
-
-df_gwent_leaders = df_gwent[df_gwent['Type'] == 'Leader'][['ID','Name','Available','Provision'	,'ArtistName','Rarity','FactionId','Type','Fluff','Tooltip']]
-df_gwent_leaders = df_gwent_leaders.astype({'ID':'int','Provision':'int'})
-
-df_gwent_factionInfo = df_gwent[df_gwent.ID.apply(lambda x: len(str(x))==5)]
-df_gwent_factionInfo = df_gwent_factionInfo[['ID','Fluff']]
-
-
-
-df_gwent =df_gwent[df_gwent.ID.apply(lambda x: len(str(x))==8)] # para quedarme unicamente aquelals cuyo ID sea el asociado a una carta
-df_gwent = df_gwent.astype({'ID':'int','Power':'int','Armor':'int','Provision':'int'})
-df_gwent['Num'] = 1 
-df_cahir = pd.DataFrame({'ID':[162104],'Category_3':['Knigth']})
-df_gwent = df_gwent.merge(df_cahir, on = 'ID',how= 'outer')
-df_gwent = df_gwent[['ID','Name','Available' ,'Power','Armor','Provision' ,'ArtistName','Placement' ,'Rarity','Category_0','Category_1','Category_2','Category_3','FactionId' ,'FactionId2','Tier','Type' ,'Fluff','Tooltip','hab0','hab1','hab2','hab3','hab4','hab5','hab6','hab7','Num']]
-df_gwent = df_gwent[df_gwent['Type']!='Leader']
-
 ##############################################################################################################
 
 def seleccion(self,columna,seleccionado):
