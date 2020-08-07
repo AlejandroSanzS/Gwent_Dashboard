@@ -1,1 +1,1 @@
-web: bokeh serve — port=$PORT --allow-websocket-origin=dashboard-gwent.herokuapp.com --host=* \ --address=0.0.0.0  — use-xheaders main.py
+web: bokeh serve — port=$PORT --allow-websocket-origin=gwentdashboard.herokuapp.com/ --host=* \ --address=0.0.0.0  — use-xheaders main.py
