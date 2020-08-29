@@ -6,8 +6,8 @@ from math import pi
 from bokeh.models import sources
 from bokeh.colors import named
 from bokeh.transform import factor_cmap,linear_cmap
-from bokeh.palettes import Turbo256 as pallete
-from bokeh.palettes import Inferno256,Category20,Viridis256
+#from bokeh.palettes import Turbo256 as pallete
+from bokeh.palettes import Inferno256,Category20,Viridis256, Turbo256
 from bokeh.plotting import figure, output_file, show,output_notebook
 from bokeh.io import output_file, show,curdoc
 from bokeh.models import CheckboxButtonGroup,Panel, Tabs, Div, Slider, TextInput,TextAreaInput,ColumnDataSource, HoverTool,Select
@@ -19,7 +19,14 @@ from bokeh.palettes import Spectral4,Spectral6,Spectral5
 
 
 
-os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
+#os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
+#print(os.getcwd())
+directory = os.getcwd()
+print('The directory is', directory)
+#os.chdir(directory)
+os.chdir(directory+r'\Gwent_Dashboard\data')
+#os.chdir(r'/data')
+#os.chdir(directory+r'\data')
 dataframe_art = pd.read_excel('df_processed.xlsx', sheet_name='dataframe_art')
 dataframe_tipo= pd.read_excel('df_processed.xlsx', sheet_name='dataframe_tipo')
 dataframe_faction= pd.read_excel('df_processed.xlsx', sheet_name='dataframe_faction')
@@ -167,7 +174,7 @@ def figura_cartas():
         ("Tipo", "@artistas"),
         ("Cuenta", "@counts"),
     ]
-    color_map = factor_cmap(field_name='artistas',palette=pallete, factors=artistas)
+    color_map = factor_cmap(field_name='artistas',palette=Turbo256, factors=artistas)
     p = figure(plot_width=1880, plot_height=800, title="Number of cards per artist",x_range= artistas,toolbar_location='above', tools="hover,pan,wheel_zoom,box_zoom,reset", tooltips=TOOLTIPS)
 
     p.vbar(x ='artistas', top ='counts',width=1,source=source,color =color_map)
@@ -421,7 +428,7 @@ tab6 = Panel(child=row(column(div_cards,data_table1,button1),column(div_leaders,
 div_keg = Div(text="""This data was obtained from opening 75 Kegs""",
 width=200, height=100)
 
-os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
+#os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 df_kegs = pd.read_excel('kegs.xlsx',sheet_name = 'BASE').fillna(0)
 df_kegs = df_kegs.drop('KEG',axis =1).astype({'RARE':'int64','EPIC':'int64','LEGENDARY':'int64'})
 
@@ -454,7 +461,7 @@ y2_x.on_change('value', update2_x)
 
 
 def figura2_x():
-    os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
+    #os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
     data_x = pd.read_excel( 'categories.xlsx', sheet_name=str(y_x.value + '_' + y2_x.value))
     dataframe1 = data_x
     cate =list(dataframe1['Category'])
@@ -509,7 +516,7 @@ layout41_y = row(figura2_y())
 
 #####################################################################################################
 # EXPLICACION DE LAS HABILIDADES
-os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
+#os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
 keywords = pd.read_excel('keywords.xlsx')
 habilidades = list(keywords.Ability)
 
@@ -518,7 +525,7 @@ def update_habilidad(attr, old, new):
     layout_habil.children[0]= texto()
 
 def texto():
-    os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
+    #os.chdir(r'C:/Users/alexs/Desktop/Alejandro/Universidad/Proyectos/Gwent_Dashboard/data')
     keywords = pd.read_excel('keywords.xlsx')
     habilidades = list(keywords.Ability)
     texto = keywords[keywords['Ability']==sel_habilidad.value]['Description']
