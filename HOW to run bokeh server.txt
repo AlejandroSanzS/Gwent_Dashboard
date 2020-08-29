@@ -1,0 +1,1 @@
+cd 'local_directory_of_the_code' python -m bokeh serve --show bokeh_gwent
